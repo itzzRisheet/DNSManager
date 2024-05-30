@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { register } from "../helper/helper";
+import toast from "react-hot-toast";
 
 const validateEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -162,7 +163,12 @@ const Register = () => {
               </div>
               <div className="flex justify-center w-full items-center">
                 <div>
-                  <button className="flex items-center justify-center py-2 px-4 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
+                  <button
+                    className="flex items-center justify-center py-2 px-4 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                    onClick={() => {
+                      toast.error("Not implemented yet");
+                    }}
+                  >
                     <svg
                       viewBox="0 0 24 24"
                       height="25"
@@ -239,7 +245,12 @@ const Register = () => {
                     </svg>
                     <span className="ml-2 text-sm">Sign up with Google</span>
                   </button>
-                  <button className="flex items-center justify-center py-2 px-4 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg mt-4">
+                  <button
+                    className="flex items-center justify-center py-2 px-4 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg mt-4"
+                    onClick={() => {
+                      toast.error("Not implemented yet");
+                    }}
+                  >
                     <svg
                       viewBox="0 0 30 30"
                       height="30"
