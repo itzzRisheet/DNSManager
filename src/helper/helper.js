@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export async function login(values) {
   try {
@@ -18,7 +19,7 @@ export async function login(values) {
       password,
     });
 
-    return { token: data.token, status };
+    return { token: data.token, status, data };
   } catch (error) {
     throw error;
   }
@@ -99,7 +100,7 @@ export async function getRecords(hostedZoneID) {
   }
 }
 
-export async function deleteRecord(hostedZoneId,changes) {
+export async function deleteRecord(hostedZoneId, changes) {
   try {
     const { data, status } = await axios.post(
       `${import.meta.env.VITE_BASEURL}/recordsoperations`,
@@ -112,7 +113,7 @@ export async function deleteRecord(hostedZoneId,changes) {
   }
 }
 
-export async function createRecord(hostedZoneId , changes){
+export async function createRecord(hostedZoneId, changes) {
   try {
     const { data, status } = await axios.post(
       `${import.meta.env.VITE_BASEURL}/recordsoperations`,

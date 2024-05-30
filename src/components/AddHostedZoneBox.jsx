@@ -232,6 +232,7 @@ const AddHostedZoneBox = () => {
         <hr className="bg-gray-400 w-full" />
       </div>
       <DragAndDrop />
+      
     </div>
   );
 };

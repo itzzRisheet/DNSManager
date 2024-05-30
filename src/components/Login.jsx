@@ -16,10 +16,13 @@ const Login = () => {
       password: "",
     },
     onSubmit: async (values) => {
-      const { token, status } = await login(values);
+      const { token, status, data } = await login(values)
       if (status === 200) {
         localStorage.setItem("token", token);
         navigate("/dash");
+      } else {
+        console.log(data.msg);
+        toast.error(data.msg);
       }
     },
   });

@@ -104,6 +104,7 @@ const Dashboard = () => {
       ease: "power1.inOut",
     });
   });
+
   const getData = async () => {
     const { HostedZones } = (await getHostedZones()).data.data;
 
@@ -132,14 +133,26 @@ const Dashboard = () => {
           <FontAwesomeIcon
             icon={faXmark}
             className="text-white absolute right-[2rem] text-lg sm:text-xl md:text-2xl top-[2rem] hover:scale-110 transition-all duration-150 cursor-pointer"
+            onClick={() => {
+              console.log("here")
+              setAddHostedZoneOpen(false);
+            }}
           />
           <AddHostedZoneBox />
+          <span className="text-gray-200">pres ESC to return to the dashboard</span>
         </div>
       ) : (
         ""
       )}
       {addRecordBoxOpen ? (
         <div className="absolute h-screen w-screen z-50 backdrop-blur-md  flex flex-col justify-center items-center">
+          <FontAwesomeIcon
+            icon={faXmark}
+            className="text-white absolute right-[2rem] text-lg sm:text-xl md:text-2xl top-[2rem] hover:scale-110 transition-all duration-150 cursor-pointer"
+            onClick={() => {
+              setAddRecordBoxOpen(false);
+            }}
+          />
           <AddRecordBox hostedzone={currHostedZone} />
         </div>
       ) : (
@@ -147,6 +160,13 @@ const Dashboard = () => {
       )}
       {editHostedZoneBox ? (
         <div className="absolute h-screen w-screen z-50 backdrop-blur-md  flex flex-col justify-center items-center">
+          <FontAwesomeIcon
+            icon={faXmark}
+            className="text-white absolute right-[2rem] text-lg sm:text-xl md:text-2xl top-[2rem] hover:scale-110 transition-all duration-150 cursor-pointer"
+            onClick={() => {
+              setEditHostedZoneBox(false);
+            }}
+          />
           <EditHostedZoneBox zone={currHostedZone} />
         </div>
       ) : (
