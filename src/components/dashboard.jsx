@@ -19,6 +19,7 @@ import {
   faEraser,
   faPlus,
   faRefresh,
+  faSignOut,
   faTrash,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
@@ -27,6 +28,8 @@ import { useData, useLocalStore } from "../store/store";
 import AddHostedZoneBox from "./AddHostedZoneBox";
 import AddRecordBox from "./AddRecordBox";
 import EditHostedZoneBox from "./editHostedZoneBox";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const [hostedzones, sethostedzones] = useState([]);
@@ -112,10 +115,14 @@ const Dashboard = () => {
     setZoneLoading(false);
   };
 
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
   useEffect(() => {
     setZoneLoading(true);
 
     getData();
+    const { username } = jwtDecode(localStorage.getItem("token"));
+    setUsername(username);
   }, []);
 
   return (
@@ -152,6 +159,17 @@ const Dashboard = () => {
             : ""
         }`}
       >
+        <div className="absolute top-4 text-white"> Hello , {username}</div>
+        <div
+          className="absolute right-5 top-4 text-white text-lg cursor-pointer hover:scale-110 transition-all duration-200"
+          onClick={() => {
+            localStorage.removeItem("token");
+            navigate("/");
+          }}
+        >
+          {" "}
+          <FontAwesomeIcon icon={faSignOut} />{" "}
+        </div>
         <div className="h-5/6 w-5/6  flex flex-col gap-4 p-4 rounded-3xl">
           <div className="dashcard border-[0.4px] py-4 bg-dashcard overflow-auto border-gray-500  flex flex-col rounded-3xl">
             <div className="relative  w-full flex justify-between  items-center px-4 text-white font-bold text-xs md:text-sm">
