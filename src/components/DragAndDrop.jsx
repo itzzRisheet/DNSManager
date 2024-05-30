@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Papa from "papaparse";
 
 const DragAndDrop = () => {
   const [files, setFiles] = useState([]);
@@ -50,29 +49,7 @@ const DragAndDrop = () => {
     }
   };
 
-  
-  const handleCSV = (csvString) => {
-    Papa.parse(csvString, {
-      header: true,
-      skipEmptyLines: true,
-      complete: (result) => {
-        const formattedHostedZones = result.data.map((row) => ({
-          domainName: row.domainName || "",
-          description: row.description || "",
-          privateZone: !!row.privateZone,
-          vpcRegion: row.vpcRegion || "",
-          vpcId: row.vpcId || "",
-        }));
-        setHostedZones((prevHostedZones) => [
-          ...prevHostedZones,
-          ...formattedHostedZones,
-        ]);
-      },
-      error: (error) => {
-        console.error("Error parsing CSV:", error);
-      },
-    });
-  };
+  const handleCSV = (csvString) => {};
 
   return (
     <div
