@@ -134,12 +134,14 @@ const Dashboard = () => {
             icon={faXmark}
             className="text-white absolute right-[2rem] text-lg sm:text-xl md:text-2xl top-[2rem] hover:scale-110 transition-all duration-150 cursor-pointer"
             onClick={() => {
-              console.log("here")
+              console.log("here");
               setAddHostedZoneOpen(false);
             }}
           />
           <AddHostedZoneBox />
-          <span className="text-gray-200">pres ESC to return to the dashboard</span>
+          <span className="text-gray-200">
+            pres ESC to return to the dashboard
+          </span>
         </div>
       ) : (
         ""
@@ -154,6 +156,9 @@ const Dashboard = () => {
             }}
           />
           <AddRecordBox hostedzone={currHostedZone} />
+          <span className="text-gray-200">
+            pres ESC to return to the dashboard
+          </span>
         </div>
       ) : (
         ""
@@ -168,6 +173,9 @@ const Dashboard = () => {
             }}
           />
           <EditHostedZoneBox zone={currHostedZone} />
+          <span className="text-gray-200">
+            pres ESC to return to the dashboard
+          </span>
         </div>
       ) : (
         ""
