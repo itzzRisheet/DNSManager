@@ -2,11 +2,11 @@ import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "./App.css";
-import Layout from "../layout";
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Dashboard from "./components/dashboard";
+import Layout from "../layout.jsx";
+import Home from "./components/Home.jsx";
+import Login from "./components/Login.jsx";
+import Register from "./components/Register.jsx";
+import Dashboard from "./components/dashboard.jsx";
 import { AuthorizeUser } from "./auth/auth";
 
 const router = createBrowserRouter([

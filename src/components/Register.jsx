@@ -57,11 +57,26 @@ const Register = () => {
       return errors;
     },
     onSubmit: async (values) => {
-      const { token, status } = await register(values);
-      if (status === 200) {
-        localStorage.setItem("token", token);
-        navigate("/dash");
-      }
+      const toastID = toast.loading("Fetching data...");
+
+      await register(values)
+        .then((res) => {
+          const { token, status, data } = res;
+
+          toast.remove(toastID);
+          toast.success(data.msg);
+
+          if (status === 200) {
+            localStorage.setItem("token", token);
+            navigate("/dash");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.dismiss(toastID);
+
+          toast.error(err.response.data.msg);
+        });
     },
   });
 

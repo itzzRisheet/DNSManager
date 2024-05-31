@@ -16,14 +16,28 @@ const Login = () => {
       password: "",
     },
     onSubmit: async (values) => {
-      const { token, status, data } = await login(values)
-      if (status === 200) {
-        localStorage.setItem("token", token);
-        navigate("/dash");
-      } else {
-        console.log(data.msg);
-        toast.error(data.msg);
-      }
+      const toastID = toast.loading("Fetching data...");
+
+      await login(values)
+        .then((res) => {
+          const { token, status, data, error } = res;
+
+          toast.remove(toastID)
+          toast.success(data.msg);
+
+          if (status === 200) {
+            localStorage.setItem("token", token);
+            navigate("/dash");
+          } else {
+            console.log("error : ", error);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.dismiss(toastID);
+
+          toast.error(err.response.data.msg);
+        });
     },
   });
 

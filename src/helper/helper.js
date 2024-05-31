@@ -13,11 +13,12 @@ export async function login(values) {
 
     const url = import.meta.env.VITE_BASEURL + "/login";
     console.log(url);
-    const { data, status } = await axios.post(url, {
+    const response = await axios.post(url, {
       email,
       username,
       password,
     });
+    const { data, status } = response;
 
     return { token: data.token, status, data };
   } catch (error) {
